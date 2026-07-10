@@ -2,7 +2,7 @@ name: 'WGExtender'
 description: 'Extending WorldGuard plugin features'
 main: wgextender.WGExtender
 api-version: '1.20'
-version: '${project.version}-x'
+version: '${pluginVersion}-x'
 authors: [_Shevchik_, imDaniX]
 depend: [WorldGuard, WorldEdit]
 softdepend: [PlaceholderAPI, LuckPerms]

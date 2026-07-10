@@ -52,8 +52,6 @@ import static wgextender.utils.WEUtils.weLocation;
 import static wgextender.utils.WEUtils.weWorld;
 
 public final class WGUtils {
-	public static final RegionQuery REGION_QUERY = getRegionContainer().createQuery();
-
 	public static final RegionCommands REGION_COMMANDS = new RegionCommands(getWorldGuard());
 	private static final Set<Character> FLAG_COMMAND_FLAGS = getFlagCommandFlags();
 
@@ -116,24 +114,24 @@ public final class WGUtils {
 	}
 
 	public static <T> @Nullable T getFlagValue(@NotNull Player player, @NotNull Location location, @NotNull Flag<T> flag) {
-		return REGION_QUERY.queryValue(weLocation(location), WorldGuardPlugin.inst().wrapPlayer(player), flag);
+		return getRegionContainer().createQuery().queryValue(weLocation(location), WorldGuardPlugin.inst().wrapPlayer(player), flag);
 	}
 
 	public static <T> @Nullable T getFlagValue(@NotNull Location location, @NotNull Flag<T> flag) {
-		return REGION_QUERY.queryValue(weLocation(location), null, flag);
+		return getRegionContainer().createQuery().queryValue(weLocation(location), null, flag);
 	}
 
 	public static boolean isFlagAllows(@NotNull Player player, @NotNull Location location, @NotNull StateFlag flag) {
-		return REGION_QUERY.testState(weLocation(location), WorldGuardPlugin.inst().wrapPlayer(player), flag);
+		return getRegionContainer().createQuery().testState(weLocation(location), WorldGuardPlugin.inst().wrapPlayer(player), flag);
 	}
 
 	public static boolean isFlagTrue(@NotNull Location location, @NotNull BooleanFlag flag) {
-		Boolean bool = REGION_QUERY.queryValue(weLocation(location), null, flag);
+		Boolean bool = getRegionContainer().createQuery().queryValue(weLocation(location), null, flag);
 		return (bool != null) && bool;
 	}
 
 	public static @NotNull ApplicableRegionSet getRegionsAt(@NotNull Location location) {
-		return REGION_QUERY.getApplicableRegions(weLocation(location));
+		return getRegionContainer().createQuery().getApplicableRegions(weLocation(location));
 	}
 
 	public static boolean hasRegion(@NotNull World world, @NotNull String regionName) {

@@ -139,7 +139,7 @@ public final class BlockLimitsHandler extends ConfigurableListenerBase<Configura
 			}
 			if (is(minHorizontal, Comparison.BELOW, config.minimalHorizontal())) {
 				return new EvaluationResult(
-						ResultType.DENY_MIN_VOLUME,
+						ResultType.DENY_HORIZONTAL,
 						minHorizontal,
 						config.minimalHorizontal()
 				);
@@ -151,7 +151,7 @@ public final class BlockLimitsHandler extends ConfigurableListenerBase<Configura
 						config.minimalVertical()
 				);
 			}
-			BigInteger maxBlocks = refreshBlockLimit(player);
+			BigInteger maxBlocks = cachedBlockLimit(player);
 			if (is(volume, Comparison.ABOVE, maxBlocks)) {
 				return new EvaluationResult(
 						ResultType.DENY_MAX_VOLUME,

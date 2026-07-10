@@ -1,18 +1,16 @@
-# Build Folders #
-bin/
+# Build output
 build/
 target/
-gen/
-libraries_runtime/
-libraries_shade/
-build_libraries/
-logs/
 
 # Gradle
-.gradle
+.gradle/
 .gradletasknamecache
 
- # Eclipse Files #
+# IntelliJ
+.idea/
+*.iml
+
+# Eclipse
 *.project
 *.classpath
 *.prefs
@@ -23,7 +21,10 @@ logs/
 # Netbeans
 .nb-gradle/
 
-# IntelliJ
-.idea/
-*.iml
-
+# Misc
+bin/
+gen/
+logs/
+libraries_runtime/
+libraries_shade/
+build_libraries/

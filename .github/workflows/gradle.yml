@@ -19,11 +19,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: 'maven'
+          cache: 'gradle'
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle
+        run: ./gradlew shadowJar
+
       - uses: actions/upload-artifact@main
         with:
           name: WGExtender
-          path: target/WGExtender*.jar
+          path: build/libs/WGExtenderX-*.jar
